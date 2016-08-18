@@ -70,7 +70,7 @@ public class SpeakerApplication {
         ipcon.connect(HOST, PORT);
 
         ps.addBeepFinishedListener(() -> {
-            System.out.println("X");
+            System.out.println("I am your Father");
             blocked = false;
         });
 
@@ -87,7 +87,6 @@ public class SpeakerApplication {
             }
 
             System.out.println(x);
-
         }
 
 

@@ -35,6 +35,7 @@ public class SpeakerApplication {
     private static int GH = 3135;
     private static int GSH = 3322;
     private static int AH = 3520;
+    private static int MAX_DIFFERENCE = 100;
 
     public static void main(String[] args) throws Exception {
 //        SpringApplication.run(SpeakerApplication.class, args);
@@ -45,6 +46,7 @@ public class SpeakerApplication {
 
         Song imperialMarch = new Song();
 
+        //first Part
         imperialMarch.addNote(500, A);
         imperialMarch.addNote(500, A);
         imperialMarch.addNote(500, A);
@@ -55,6 +57,7 @@ public class SpeakerApplication {
         imperialMarch.addNote(150, CH);
         imperialMarch.addNote(650, A);
 
+        //second Part
         imperialMarch.addNote(500, EH);
         imperialMarch.addNote(500, EH);
         imperialMarch.addNote(500, EH);
@@ -74,15 +77,15 @@ public class SpeakerApplication {
 
         while (!exit) {
 
-            int a = dist.getDistanceValue();
+            int firstSample = dist.getDistanceValue();
             Thread.sleep(50);
-            int b = dist.getDistanceValue();
-            int x = a - b;
+            int secondSample = dist.getDistanceValue();
+            int difference = firstSample - secondSample;
 
-            if (x >= 100) {
+            if (difference >= MAX_DIFFERENCE) {
                 playSong(imperialMarch);
             }
-            System.out.println(x);
+            System.out.println(difference);
         }
 
         System.out.println("Press Key to exit.");
@@ -90,16 +93,6 @@ public class SpeakerApplication {
 
         ipcon.disconnect();
 
-    }
-
-    private static void playNext() {
-        try {
-            ps.beep(590, 500);
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (NotConnectedException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void playSong(Song song) throws Exception {

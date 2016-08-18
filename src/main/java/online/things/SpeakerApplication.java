@@ -43,7 +43,6 @@ public class SpeakerApplication {
         ps = new BrickletPiezoSpeaker(UIDS, ipcon);
         dist = new BrickletDistanceUS(UIDD, ipcon);
 
-
         Song imperialMarch = new Song();
 
         imperialMarch.addNote(500, A);
@@ -66,7 +65,6 @@ public class SpeakerApplication {
         imperialMarch.addNote(150, CH);
         imperialMarch.addNote(650, A);
 
-
         ipcon.connect(HOST, PORT);
 
         ps.addBeepFinishedListener(() -> {
@@ -74,24 +72,18 @@ public class SpeakerApplication {
             blocked = false;
         });
 
-
         while (!exit) {
+
             int a = dist.getDistanceValue();
             Thread.sleep(50);
             int b = dist.getDistanceValue();
-
             int x = a - b;
 
             if (x >= 100) {
                 playSong(imperialMarch);
             }
-
             System.out.println(x);
         }
-
-
-//        playSong(imperialMarch);
-
 
         System.out.println("Press Key to exit.");
         System.in.read();
@@ -113,7 +105,6 @@ public class SpeakerApplication {
     public static void playSong(Song song) throws Exception {
         pos = 0;
 
-
         while (pos < song.getNotes().size()) {
 
             if (!blocked) {
@@ -124,9 +115,6 @@ public class SpeakerApplication {
                 blocked = true;
             }
             Thread.sleep(50);
-
         }
-
     }
-
 }

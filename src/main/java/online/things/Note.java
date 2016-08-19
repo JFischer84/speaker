@@ -5,29 +5,33 @@ package online.things;
  */
 public class Note {
 
-    private long duration;
-    private int frequency;
+	private long duration;
+	private int frequency;
 
-    public long getDuration() {
-        return duration;
-    }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
+	public long getDuration() {
+		return duration;
+	}
 
-    public int getFrequency() {
-        return frequency;
-    }
 
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
-    }
+	public void setDuration(long duration) {
+		this.duration = duration;
+	}
 
-    public Note(long duration, int frequency) {
-        this.duration = duration;
-        this.frequency = frequency;
-    }
 
+	public int getFrequency() {
+		return frequency;
+	}
+
+
+	public void setFrequency(int frequency) {
+		this.frequency = frequency;
+	}
+
+
+	public Note(long duration, int frequency) {
+		this.duration = duration;
+		this.frequency = frequency;
+	}
 
 }
